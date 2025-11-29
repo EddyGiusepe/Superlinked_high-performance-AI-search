@@ -27,10 +27,7 @@ RUN
 uv run quickstart.py
 """
 from typing import List, Dict, Any
-
 from superlinked import framework as sl
-
-
 
 class Review(sl.Schema):
     """
@@ -51,6 +48,15 @@ def create_search_index(model_name: str = "all-MiniLM-L6-v2") -> tuple[sl.Index,
     Args:
         model_name: Nome do modelo de embedding a ser usado.
                    O modelo "all-MiniLM-L6-v2" é leve e eficiente para textos curtos.
+                   
+                   Modelos locais suportados (Sentence Transformers):
+                   - all-MiniLM-L6-v2: 384 dim, rápido, bom para início
+                   - all-mpnet-base-v2: 768 dim, melhor qualidade, mais lento
+                   - paraphrase-multilingual-MiniLM-L12-v2: multilíngue
+                   
+                   Para usar OpenAI (text-embedding-3-small/large):
+                   - Veja: one_quickstart/quickstart_openai.py
+                   - Requer: API key e integração customizada
     
     Returns:
         tuple contendo:
