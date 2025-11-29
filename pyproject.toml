@@ -5,6 +5,7 @@ description = "Aqui aprenderemos que realizar pesquisa semântica complexa"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "openai==2.8.1",
     "superlinked>=37.5.0",
 ]
 
