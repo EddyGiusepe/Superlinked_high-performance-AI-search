@@ -52,7 +52,7 @@ class Review(sl.Schema):
 
 
 def create_search_index(
-    model_name: str = "all-MiniLM-L6-v2",
+    model_name: str = "text-embedding-3-small",
     text_weight: float = 0.7,
     rating_weight: float = 0.3,
     enable_natural_query: bool = False
@@ -369,6 +369,7 @@ def main() -> None:
         print("   💡 Dica: Configure OPENAI_API_KEY para usar queries naturais!")
     
     index, query, review_schema = create_search_index(
+        model_name="text-embedding-3-small",
         text_weight=0.7,
         rating_weight=0.3,
         enable_natural_query=has_openai_key
@@ -389,14 +390,14 @@ def main() -> None:
     
     if has_openai_key:
         # MODO NATURAL QUERY
-        natural_query_1 = "A film with incredible acting and a rating above 4"
+        natural_query_1 = "Filmes com ótima atuação e nota acima de 4"
         print(f"💬 Query natural: '{natural_query_1}'")
         print("\n🔎 Resultados (ordenados por similaridade combinada):")
         print("-" * 80)
         results_1 = search_reviews_natural(app, query, natural_query_1)
     else:
         # MODO TRADICIONAL
-        search_text_1 = "amazing performance great movie"
+        search_text_1 = "Ótima atuação ótimo filme"
         search_rating_1 = 4.5
         print(f"📝 Texto de busca: '{search_text_1}'")
         print(f"⭐ Rating de busca: {search_rating_1}")
@@ -413,14 +414,14 @@ def main() -> None:
     
     if has_openai_key:
         # MODO NATURAL QUERY
-        natural_query_2 = "Terrible movies with bad acting and ratings below 2"
+        natural_query_2 = "Filmes ruins com atuação ruim e nota abaixo de 2"
         print(f"💬 Query natural: '{natural_query_2}'")
         print("\n🔎 Resultados (ordenados por similaridade combinada):")
         print("-" * 80)
         results_2 = search_reviews_natural(app, query, natural_query_2)
     else:
         # MODO TRADICIONAL
-        search_text_2 = "terrible boring bad movie"
+        search_text_2 = "Ruim atuação ruim filme"
         search_rating_2 = 1.5
         print(f"📝 Texto de busca: '{search_text_2}'")
         print(f"⭐ Rating de busca: {search_rating_2}")
@@ -437,14 +438,14 @@ def main() -> None:
     
     if has_openai_key:
         # MODO NATURAL QUERY
-        natural_query_3 = "Show me decent films with average ratings around 3 stars"
+        natural_query_3 = "Filmes medianos com nota média em torno de 3 estrelas"
         print(f"💬 Query natural: '{natural_query_3}'")
         print("\n🔎 Resultados (ordenados por similaridade combinada):")
         print("-" * 80)
         results_3 = search_reviews_natural(app, query, natural_query_3)
     else:
         # MODO TRADICIONAL
-        search_text_3 = "decent average movie"
+        search_text_3 = "Mediano nota média filme"
         search_rating_3 = 3.0
         print(f"📝 Texto de busca: '{search_text_3}'")
         print(f"⭐ Rating de busca: {search_rating_3}")
